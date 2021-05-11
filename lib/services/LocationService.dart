@@ -1,4 +1,3 @@
-import 'package:clima/utilities/HttpRequest.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationService {

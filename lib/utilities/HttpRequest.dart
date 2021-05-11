@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:clima/utilities/APIWeather.dart';
 import 'package:http/http.dart' as http;
 
 class HttpRequest {
