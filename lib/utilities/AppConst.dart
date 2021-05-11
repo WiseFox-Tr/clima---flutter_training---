@@ -20,7 +20,6 @@ class AppConst {
   static const conditionTextStyle = TextStyle(
     fontSize: 100.0,
   );
-
 }
 
 
