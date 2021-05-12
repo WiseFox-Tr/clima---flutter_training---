@@ -40,7 +40,7 @@ class Weather {
     }
   }
 
-  String toPrintInstance() {
+  String printInstance() {
     return 'id weather : ${this._idWeather}, city name : ${this._cityName}, temperature : ${this._temperature}\n'
     'message : ${this.getMessage()}, weather icon : ${this.getWeatherIcon()}';
   }
