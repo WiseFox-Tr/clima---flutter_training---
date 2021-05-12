@@ -3,7 +3,7 @@ import 'package:clima/utilities/APIWeather.dart';
 
 class WebServices {
 
-  static Future<dynamic> getDataByCurrentLocation(String latitude, String longitude) async {
+  static Future<dynamic> getWeatherDataByCurrentLocation(String latitude, String longitude) async {
     Uri url = Uri.https(
       ApiWeather.authority,
       ApiWeather.unencodedPath,
