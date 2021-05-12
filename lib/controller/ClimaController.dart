@@ -1,4 +1,5 @@
 
+import 'package:clima/model/Weather.dart';
 import 'package:clima/screens/location_screen.dart';
 import 'package:clima/services/LocationService.dart';
 import 'package:clima/services/WebServices.dart';
@@ -8,14 +9,14 @@ import 'package:flutter/material.dart';
 class ClimaController {
 
   LocationService _location = LocationService();
-  var data;
+  Weather weatherData;
 
   Future<void> getWeatherDataByCurrentLocation(BuildContext context) async {
     try{
       await _getCurrentLocation();
-      data = await WebServices.getWeatherDataByCurrentLocation(_location.latitude.toString(), _location.longitude.toString());
-      print('data : $data');
-      pushToScreen(context, LocationScreen());
+      weatherData = await WebServices.getWeatherDataByCurrentLocation(_location.latitude.toString(), _location.longitude.toString());
+      print('data details : ${weatherData.toPrintInstance()}');
+      pushToScreen(context, LocationScreen(weatherData));
     } catch(e) {
       print('exception : $e');
       ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
