@@ -2,6 +2,7 @@
 import 'package:clima/screens/location_screen.dart';
 import 'package:clima/services/LocationService.dart';
 import 'package:clima/services/WebServices.dart';
+import 'package:clima/utilities/AppSnackBar.dart';
 import 'package:flutter/material.dart';
 
 class ClimaController {
@@ -17,6 +18,7 @@ class ClimaController {
       pushToScreen(context, LocationScreen());
     } catch(e) {
       print('exception : $e');
+      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
     }
   }
 
