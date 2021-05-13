@@ -4,12 +4,18 @@ class AppConst {
 
   static const tempTextStyle = TextStyle(
     fontFamily: 'Spartan MB',
-    fontSize: 100.0,
+    fontSize: 80.0,
   );
 
   static const messageTextStyle = TextStyle(
     fontFamily: 'Spartan MB',
+    fontSize: 50.0,
+  );
+
+  static const cityTextStyle = TextStyle(
+    fontFamily: 'Spartan MB',
     fontSize: 60.0,
+    color: Colors.lightBlueAccent,
   );
 
   static const buttonTextStyle = TextStyle(
