@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -29,19 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 50.0,
-                  ),
-                ),
-              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: null,
+                child: TextField(
+                  onChanged: (value) {
+                    //TODO : onChanged Callback !
+                  },
+                  style: TextStyle(color: Colors.black),
+                  decoration: AppConst.textFieldDecoration,
+                ),
               ),
               TextButton(
                 onPressed: () {},
@@ -54,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               TextButton(
                 child: Text(
-                  'Weather for this location',
+                  'Weather for your location',
                   style: AppConst.buttonTextStyle,
                 ),
                 onPressed: () async {
