@@ -19,7 +19,7 @@ class AppConst {
   );
 
   static const buttonTextStyle = TextStyle(
-    fontSize: 30.0,
+    fontSize: 25.0,
     fontFamily: 'Spartan MB',
   );
 
