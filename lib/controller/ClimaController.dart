@@ -11,10 +11,10 @@ class ClimaController {
   LocationService _location = LocationService();
   Weather weatherData;
 
-  Future<void> getWeatherDataByCurrentLocation(BuildContext context) async {
+  Future<void> getCurrentLocationWeather(BuildContext context) async {
     try{
       await _getCurrentLocation();
-      weatherData = await WebServices.getWeatherDataByCurrentLocation(_location.latitude.toString(), _location.longitude.toString());
+      weatherData = await WebServices.getCurrentLocationWeather(_location.latitude.toString(), _location.longitude.toString());
       print('data details : ${weatherData.printInstance()}');
       pushToScreen(context, LocationScreen(weatherData));
     } catch(e) {

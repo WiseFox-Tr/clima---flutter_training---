@@ -27,7 +27,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               ),
               onPressed: () async {
                 setState(() => _isLoading = true);
-                await _climaController.getWeatherDataByCurrentLocation(context);
+                await _climaController.getCurrentLocationWeather(context);
                 setState(() => _isLoading = false);
               },
             ),
@@ -36,7 +36,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               child: SpinKitDoubleBounce(
                 color: Colors.white,
               ),
-            )
+            ),
           ],
         ),
       ),
