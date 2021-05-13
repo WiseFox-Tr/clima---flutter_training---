@@ -1,6 +1,6 @@
 
 import 'package:clima/model/Weather.dart';
-import 'package:clima/screens/location_screen.dart';
+import 'package:clima/screens/weather_screen.dart';
 import 'package:clima/services/LocationService.dart';
 import 'package:clima/services/WebServices.dart';
 import 'package:clima/utilities/AppSnackBar.dart';
@@ -16,7 +16,7 @@ class ClimaController {
       await _getCurrentLocation();
       weatherData = await WebServices.getCurrentLocationWeather(_location.latitude.toString(), _location.longitude.toString());
       print('data details : ${weatherData.printInstance()}');
-      pushToScreen(context, LocationScreen(weatherData));
+      pushToScreen(context, WeatherScreen(weatherData));
     } catch(e) {
       print('exception : $e');
       ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
