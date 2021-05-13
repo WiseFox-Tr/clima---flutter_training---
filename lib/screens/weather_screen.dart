@@ -6,16 +6,16 @@ import 'package:clima/utilities/AppConst.dart';
 
 import '../utilities/AppConst.dart';
 
-class LocationScreen extends StatefulWidget {
+class WeatherScreen extends StatefulWidget {
 
   final Weather weatherData;
-  LocationScreen(this.weatherData);
+  WeatherScreen(this.weatherData);
 
   @override
-  _LocationScreenState createState() => _LocationScreenState();
+  _WeatherScreenState createState() => _WeatherScreenState();
 }
 
-class _LocationScreenState extends State<LocationScreen> {
+class _WeatherScreenState extends State<WeatherScreen> {
 
   ClimaController _climaController = ClimaController();
   String _weatherIcon;
@@ -23,13 +23,17 @@ class _LocationScreenState extends State<LocationScreen> {
   String _weatherMessage;
   int _temperature;
 
-  @override
-  void initState() {
-    super.initState();
+  void _setValuesForUI() {
     _weatherIcon = widget.weatherData.getWeatherIcon();
     _weatherCity = widget.weatherData.getCityName;
     _weatherMessage = widget.weatherData.getMessage();
     _temperature = widget.weatherData.getTemperature;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _setValuesForUI();
   }
 
   @override
