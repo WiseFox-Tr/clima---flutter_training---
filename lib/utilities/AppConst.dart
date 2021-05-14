@@ -25,6 +25,7 @@ class AppConst {
   static const buttonTextStyle = TextStyle(
     fontSize: 25.0,
     fontFamily: 'Spartan MB',
+    color: Colors.lightBlueAccent,
   );
 
   static const conditionTextStyle = TextStyle(
