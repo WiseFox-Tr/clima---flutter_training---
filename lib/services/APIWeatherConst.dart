@@ -1,4 +1,4 @@
-import 'package:clima/utilities/api_key.dart';
+import 'package:clima/services/api_key.dart';
 
 class ApiWeatherConst {
   static const String authority = 'api.openweathermap.org';
