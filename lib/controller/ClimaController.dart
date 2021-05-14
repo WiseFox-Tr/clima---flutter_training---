@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class ClimaController {
 
   LocationService _location = LocationService();
-  Weather weatherData;
+  Weather _weatherData;
   String _citySearched;
 
   get getCitySearched => _citySearched;
@@ -18,23 +18,23 @@ class ClimaController {
   Future<void> getCurrentLocationWeather(BuildContext context) async {
     try{
       await _getCurrentLocation();
-      weatherData = await WebServices.getCurrentLocationWeather(_location.latitude.toString(), _location.longitude.toString());
-      print('data details : ${weatherData.printInstance()}');
-      pushToScreen(context, WeatherScreen(weatherData));
+      _weatherData = await WebServices.getCurrentLocationWeather(_location.latitude.toString(), _location.longitude.toString());
+      print('data details : ${_weatherData.printInstance()}');
+      pushToScreen(context);
     } catch(e) {
       print('exception : $e');
-      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
+      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('Oups ! A problem occurs...'));
     }
   }
 
-  Future<void> getInputlLocationWeather(BuildContext context) async {
+  Future<void> getInputLocationWeather(BuildContext context) async {
     try {
-      weatherData = await WebServices.getInputLocationWeather(_citySearched);
-      print('data details : ${weatherData.printInstance()}');
-      pushToScreen(context, WeatherScreen(weatherData));
+      _weatherData = await WebServices.getInputLocationWeather(_citySearched);
+      print('data details : ${_weatherData.printInstance()}');
+      pushToScreen(context);
     } catch (e) {
       print('exception : $e');
-      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
+      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('Oups ! A problem occurs...\nMaybe try an other name'));
     }
   }
 
@@ -43,11 +43,10 @@ class ClimaController {
     print("Current latitude : ${_location.latitude}\nCurrent longitude : ${_location.longitude}");
   }
 
-  ///Uses Navigator.push.
-  void pushToScreen(BuildContext context, Widget destinationScreen) {
+  void pushToScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => destinationScreen),
+      MaterialPageRoute(builder: (context) => WeatherScreen(_weatherData)),
     );
   }
 }
