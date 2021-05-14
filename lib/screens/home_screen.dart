@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               TextButton(
-                onPressed: () => onClickAsyncCallBack(_climaController.getInputlLocationWeather(context)),
+                onPressed: () => onClickAsyncCallBack(_climaController.getInputLocationWeather(context)),
                 child: Text(
                   'Weather for input location',
                   style: AppConst.buttonTextStyle.copyWith(
