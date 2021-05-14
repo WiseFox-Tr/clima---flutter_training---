@@ -68,7 +68,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.pop(context),
                     child: Icon(
                       Icons.location_city,
                       color: Colors.white,

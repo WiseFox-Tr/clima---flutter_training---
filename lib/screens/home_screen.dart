@@ -15,6 +15,13 @@ class _HomeScreenState extends State<HomeScreen> {
   ClimaController _climaController = ClimaController();
   bool _isLoading = false;
 
+
+  Future<void> onClickAsyncCallBack(Future method) async {
+    setState(() => _isLoading = true);
+    await method;
+    setState(() => _isLoading = false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,14 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
                   onChanged: (value) {
-                    //TODO : onChanged Callback !
+                    _climaController.setCitySearched = value;
                   },
                   style: TextStyle(color: Colors.black),
                   decoration: AppConst.textFieldDecoration,
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () => onClickAsyncCallBack(_climaController.getInputlLocationWeather(context)),
                 child: Text(
                   'Weather for input location',
                   style: AppConst.buttonTextStyle.copyWith(
@@ -55,11 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Weather for your location',
                   style: AppConst.buttonTextStyle,
                 ),
-                onPressed: () async {
-                  setState(() => _isLoading = true);
-                  await _climaController.getCurrentLocationWeather(context);
-                  setState(() => _isLoading = false);
-                },
+                onPressed: () => _climaController.getCurrentLocationWeather(context),
               ),
               Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),

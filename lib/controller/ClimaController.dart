@@ -10,6 +10,10 @@ class ClimaController {
 
   LocationService _location = LocationService();
   Weather weatherData;
+  String _citySearched;
+
+  get getCitySearched => _citySearched;
+  set setCitySearched(String newValue) => _citySearched = newValue;
 
   Future<void> getCurrentLocationWeather(BuildContext context) async {
     try{
@@ -18,6 +22,17 @@ class ClimaController {
       print('data details : ${weatherData.printInstance()}');
       pushToScreen(context, WeatherScreen(weatherData));
     } catch(e) {
+      print('exception : $e');
+      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
+    }
+  }
+
+  Future<void> getInputlLocationWeather(BuildContext context) async {
+    try {
+      weatherData = await WebServices.getInputLocationWeather(_citySearched);
+      print('data details : ${weatherData.printInstance()}');
+      pushToScreen(context, WeatherScreen(weatherData));
+    } catch (e) {
       print('exception : $e');
       ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('a problem occurs : $e'));
     }

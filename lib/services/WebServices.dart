@@ -19,4 +19,19 @@ class WebServices {
     data = await HttpRequest.httpRequestGet(url);
     return Weather(data['weather'][0]['id'], data['name'], data['main']['temp'].toInt());
   }
+
+  static Future<Weather> getInputLocationWeather(String cityName) async {
+    dynamic data;
+    Uri url = Uri.https(
+        ApiWeather.authority,
+        ApiWeather.unencodedPath,
+      {
+        'q' : cityName,
+        'units' : 'metric',
+        'appid' : ApiWeather.appid
+      }
+    );
+    data = await HttpRequest.httpRequestGet(url);
+    return Weather(data['weather'][0]['id'], data['name'], data['main']['temp'].toInt());
+  }
 }
