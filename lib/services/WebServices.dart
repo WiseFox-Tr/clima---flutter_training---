@@ -1,6 +1,6 @@
 import 'package:clima/model/Weather.dart';
-import 'package:clima/utilities/HttpRequest.dart';
-import 'package:clima/utilities/APIWeather.dart';
+import 'package:clima/services/HttpRequest.dart';
+import 'package:clima/services/APIWeatherConst.dart';
 
 class WebServices {
 
