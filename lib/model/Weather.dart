@@ -1,3 +1,5 @@
+import 'package:clima/utilities/AppText.dart';
+
 class Weather {
   int _idWeather;
   String _cityName;
@@ -30,13 +32,13 @@ class Weather {
 
   String getMessage() {
     if (_temperature > 25) {
-      return 'It\'s 🍦 time';
+      return AppTexts.hotWeather;
     } else if (_temperature > 20) {
-      return 'Time for shorts and 👕';
+      return AppTexts.niceWeather;
     } else if (_temperature < 10) {
-      return 'You\'ll need 🧣 and 🧤';
+      return AppTexts.coldWeather;
     } else {
-      return 'Bring a 🧥 just in case';
+      return AppTexts.mediumWeather;
     }
   }
 

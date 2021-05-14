@@ -4,6 +4,7 @@ import 'package:clima/screens/weather_screen.dart';
 import 'package:clima/services/LocationService.dart';
 import 'package:clima/services/WebServices.dart';
 import 'package:clima/utilities/AppSnackBar.dart';
+import 'package:clima/utilities/AppText.dart';
 import 'package:flutter/material.dart';
 
 class ClimaController {
@@ -23,7 +24,7 @@ class ClimaController {
       _pushToScreen(context);
     } catch(e) {
       print('exception : $e');
-      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('Oups ! A problem occurs...'));
+      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar(AppTexts.defaultErrorMessage));
     }
   }
 
@@ -34,7 +35,7 @@ class ClimaController {
       _pushToScreen(context);
     } catch (e) {
       print('exception : $e');
-      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('Oups ! A problem occurs...\nMaybe try an other name'));
+      ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar(AppTexts.defaultErrorMessage));
     }
   }
 
