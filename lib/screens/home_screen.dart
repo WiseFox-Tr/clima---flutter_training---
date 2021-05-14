@@ -41,9 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
-                  onChanged: (value) {
-                    _climaController.setCitySearched = value;
-                  },
+                  onChanged: (value) => _climaController.setCitySearched = value,
+                  onSubmitted: (value) => onClickAsyncCallBack(_climaController.getInputLocationWeather(context)),
                   style: TextStyle(color: Colors.black),
                   decoration: AppConst.textFieldDecoration,
                 ),
@@ -62,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Weather for your location',
                   style: AppConst.buttonTextStyle,
                 ),
-                onPressed: () => _climaController.getCurrentLocationWeather(context),
+                onPressed: () => onClickAsyncCallBack(_climaController.getCurrentLocationWeather(context)),
               ),
               Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
