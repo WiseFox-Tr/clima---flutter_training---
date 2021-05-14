@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppConst {
+  //backgrounds
+  static const String homeBackground = 'images/city_background.jpg';
+  static const String weatherBackground = 'images/location_background.jpg';
 
+  //styles
   static const tempTextStyle = TextStyle(
     fontFamily: 'Spartan MB',
     fontSize: 80.0,
@@ -39,5 +43,3 @@ class AppConst {
     ),
   );
 }
-
-
