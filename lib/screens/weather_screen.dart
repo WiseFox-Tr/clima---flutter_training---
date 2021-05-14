@@ -3,6 +3,7 @@ import 'package:clima/model/Weather.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/AppConst.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../utilities/AppConst.dart';
 
@@ -18,6 +19,7 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
 
   ClimaController _climaController = ClimaController();
+  bool _isLoading = false;
   String _weatherIcon;
   String _weatherCity;
   String _weatherMessage;
@@ -59,12 +61,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 children: <Widget>[
                   TextButton(
                     onPressed: () async {
+                      setState(() => _isLoading = true);
                       await _climaController.getCurrentLocationWeather(context);
+                      setState(() => _isLoading = false);
                     },
                     child: Icon(
                       Icons.near_me,
                       color: Colors.white,
                       size: 50.0,
+                    ),
+                  ),
+                  Visibility(
+                    visible: _isLoading,
+                    child: SpinKitDoubleBounce(
+                      color: Colors.white,
                     ),
                   ),
                   TextButton(
