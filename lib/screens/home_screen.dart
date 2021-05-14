@@ -1,4 +1,5 @@
 import 'package:clima/controller/ClimaController.dart';
+import 'package:clima/utilities/AppText.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/AppConst.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
+            image: AssetImage(AppConst.homeBackground),
             fit: BoxFit.cover,
           ),
         ),
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               TextButton(
                 onPressed: () => onClickAsyncCallBack(_climaController.getInputLocationWeather(context)),
                 child: Text(
-                  'Weather for input location',
+                  AppTexts.labelInputLocation,
                   style: AppConst.buttonTextStyle.copyWith(
                     color: Colors.white,
                   ),
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               TextButton(
                 child: Text(
-                  'Weather for your location',
+                  AppTexts.labelCurrentLocation,
                   style: AppConst.buttonTextStyle,
                 ),
                 onPressed: () => onClickAsyncCallBack(_climaController.getCurrentLocationWeather(context)),
