@@ -7,13 +7,13 @@ class WebServices {
   static Future<Weather> getCurrentLocationWeather(String latitude, String longitude) async {
     dynamic data;
     Uri url = Uri.https(
-      ApiWeather.authority,
-      ApiWeather.unencodedPath,
+      ApiWeatherConst.authority,
+      ApiWeatherConst.unencodedPath,
       {
         'lat': latitude,
         'lon': longitude,
         'units': 'metric',
-        'appid': ApiWeather.appid
+        'appid': ApiWeatherConst.appid
       },
     );
     data = await HttpRequest.httpRequestGet(url);
@@ -23,12 +23,12 @@ class WebServices {
   static Future<Weather> getInputLocationWeather(String cityName) async {
     dynamic data;
     Uri url = Uri.https(
-        ApiWeather.authority,
-        ApiWeather.unencodedPath,
+        ApiWeatherConst.authority,
+        ApiWeatherConst.unencodedPath,
       {
         'q' : cityName,
         'units' : 'metric',
-        'appid' : ApiWeather.appid
+        'appid' : ApiWeatherConst.appid
       }
     );
     data = await HttpRequest.httpRequestGet(url);
