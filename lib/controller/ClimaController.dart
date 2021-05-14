@@ -20,7 +20,7 @@ class ClimaController {
       await _getCurrentLocation();
       _weatherData = await WebServices.getCurrentLocationWeather(_location.latitude.toString(), _location.longitude.toString());
       print('data details : ${_weatherData.printInstance()}');
-      pushToScreen(context);
+      _pushToScreen(context);
     } catch(e) {
       print('exception : $e');
       ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('Oups ! A problem occurs...'));
@@ -31,7 +31,7 @@ class ClimaController {
     try {
       _weatherData = await WebServices.getInputLocationWeather(_citySearched);
       print('data details : ${_weatherData.printInstance()}');
-      pushToScreen(context);
+      _pushToScreen(context);
     } catch (e) {
       print('exception : $e');
       ScaffoldMessenger.of(context).showSnackBar(AppSnackBar.getErrorSnackBar('Oups ! A problem occurs...\nMaybe try an other name'));
@@ -43,7 +43,7 @@ class ClimaController {
     print("Current latitude : ${_location.latitude}\nCurrent longitude : ${_location.longitude}");
   }
 
-  void pushToScreen(BuildContext context) {
+  void _pushToScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => WeatherScreen(_weatherData)),
